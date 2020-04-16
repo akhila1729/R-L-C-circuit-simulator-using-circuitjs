@@ -1,0 +1,105 @@
+html>
+	<head>
+	<title>
+		A serial R-L-C circuit simulator for ac input voltage
+	</title>
+	<STYLE>
+body {
+  background-image: url("background3.png");
+}
+h1{
+	  color: black;
+	  text align:center;
+  }
+   h2{
+	   color:red;
+   }
+
+
+p {
+	color: black;
+  
+}
+div.blackhole{
+	position:absolute;
+	top:385px;
+	left: 10px;
+    z-index: 1;
+    }
+    
+div.blackhole2{
+	position:absolute;
+	top:777px;
+	right:300;
+	z-index: 1;
+}
+  
+  
+	</STYLE>
+	
+	</head>
+<body>
+	
+	<center><h1>CIRCUIT SIMULATOR for a series R-L-C circuit for ac voltage input </h1></center>
+	<h2>
+	A series R-L-C circuit has resistor(R), inductor(L) and capacitor(C) connected in parallel.Here the input voltage is sinusoidal.
+	The current in the circuit is same at all points and is sinusoidal with phase shift.
+	This circuit can be solved either mathematically or using phasor diagrams.
+	A detailed derivation of the solution of the circuit using is given below.
+	</h2>
+	<br><br>
+	<h2><A href="#Analysis">Circuit analysis</A></h2>
+	<br><br>
+	
+    <br><br>
+     <iframe src="http://tinyurl.com/sshtqux"
+            height="800" width="1200"></iframe> 
+            <br><br> 
+     <A Name= "Analysis"><b></b></A><br>
+     <p>
+		 <IMG Src= "C:\Users\ASUS\Desktop\xcircuit figures\rlc_analog_series.png" Height= "100" Width= "200"   Vspace= "10" Hspace= "10">
+		 <br>
+		 <b>Impedence</b><br>
+		 It refers to effective resistence offered by a component or a circuit to an alternating current.<br>
+		 For a capacitor,  X<sub>C</sub> =-j/(Cw)<br>
+		 For an inductor,  X<sub>L</sub> =Lwj<br>
+		 where w is the angular frequency of the ac current<br>
+		 Therefore the total impedence of the above circuit is:<br>
+		 Z = R+X<sub>C</sub>+X<sub>L</sub> = R+(Lw-1/Cw)j<br>
+		 |Z|= &#8730 ((X<sub>L</sub>-X<sub>C</sub>)<sup>2</sup>+R<sup>2</sup>))<br>
+		 <b>Circuit analysis</b><br>
+		 Applying kirchhoff's voltage law in the above circuit,<br>
+		 V<sub>L</sub>+V<sub>R</sub>+V<sub>C</sub>=V<sub>m</sub>sin(wt)<br>
+		 Writing V<sub>m</sub>sin(wt) and current as phasor, the above equation becomes:<br>
+		 ILwj+IR+-Ij/Cw =V&#8736 0<br>
+		 
+		 where I is the current phasor and V is the voltage phasor.<br>
+		  |V|= V<sub>rms</sub> which is the rms value of the input voltage, V<sub>rms</sub>=V<sub>m</sub>/&#8730 2<br>
+		 Therefore I=V<sub>rms</sub>/|Z| &#8736 -&#920 where &#920 =tan<sup>-1</sup>((Lw-1/Cw)/R) and |I|=I<sub>rms</sub>=V<sub>rms</sub>/|Z|
+		 
+		 
+		<br>
+		  <IMG Src= "C:\Users\ASUS\Desktop\xcircuit figures\phasor.png" Height= "300" Width= "600"   Vspace= "10" Hspace= "10">
+		  <br>
+		  <IMG Src= "C:\Users\ASUS\Desktop\xcircuit figures\phasor2.png" Height= "300" Width= "600"   Vspace= "10" Hspace= "10"><br>
+		  Therefore I=V<sub>rms</sub>/|Z| &#8736 -&#920 in phasor form and I(t)=(V<sub>m</sub>/|Z|)sin(wt-&#920)
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+     
+     </p>
+     <div class="blackhole">
+<img src= "C:\Users\ASUS\Desktop\xcircuit figures\blackhole.png">
+</div>
+
+<div class="blackhole2">
+<img src= "C:\Users\ASUS\Desktop\xcircuit figures\blackhole2.png">
+</div>
+
+
+   
+</body></html>

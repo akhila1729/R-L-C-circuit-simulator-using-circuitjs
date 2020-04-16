@@ -1,0 +1,920 @@
+<html>
+	<head>
+	<title>
+		A series R-L-C circuit solver with dc input
+	</title>
+	<STYLE>
+body {
+  background-image: url("background3.png");
+}
+h1{
+	  color: black;
+	  text align:center;
+  }
+   h2{
+	   color:red;
+   }
+
+
+p {
+	color: black;
+  
+}
+div.blackhole{
+	position:absolute;
+	top:380px;
+	left: 10px;
+    z-index: 1;
+    }
+    
+div.blackhole2{
+	position:absolute;
+	top:765px;
+	right:300;
+	z-index: 1;
+}
+  
+  
+	</STYLE>
+	
+	</head>
+<body>
+	
+	<center><h1>CIRCUIT SIMULATOR for a series R-L-C circuit</h1></center>
+	<h2>
+	A series R-L-C circuit has resistor(R), inductor(L) and capacitor(C) connected in series.
+	It is a oscillatory circuit like L-C circuit but with damping due to resistor.
+	The current in the circuit is same at every point but voltage differs along the circuit.
+	It is also called second-order circuit as after applying kirchhoff's voltage law,we get a second order differential equation to be solved for voltage and current.
+	A detailed derivation of the solution of the circuit is given below.
+	</h2>
+	<br><br>
+	<h2><A href="#Analysis">Mathematical circuit analysis</A></h2>
+	<br><br>
+	
+    <br><br>
+     <iframe src="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+10.20027730826997+50+5+43%0Ar+176+80+384+80+0+1%0Ac+384+352+176+352+0+0.000003+-5.818835943419426%0Al+384+80+384+352+0+0.06999999999999999+0.002102335629385873%0Av+176+80+176+352+0+0+40+5+0+0+0.5%0Ao+2+64+0+4099+10+0.05+0+2+2+3%0Ao+1+64+0+4099+20+0.05+1+2+1+3%0Ao+0+64+0+4099+0.0390625+0.05+2+2+0+3%0A38+1+0+0.000001+0.000101+Capacitance%0A38+2+0+0.01+1.01+Inductance%0A38+0+0+1+101+Resistance%0A"
+            height="800" width="1200"></iframe> 
+            <br><br> 
+     <A Name= "Analysis"><b>Mathematical circuit analysis of R-L-C circuit</b></A>
+	<p>
+		<IMG Src= "C:\Users\ASUS\Desktop\xcircuit figures\rlc_circuit.png" Height= "100" Width= "200"   Vspace= "10" Hspace= "10">
+		<Br><br>
+		In the circuit, R,L and C are in series.
+		Applying kirchhoff's voltage law in the circuit,we get
+		<br>
+		<b>V<sub>R</sub> + V<sub>L</sub> + V<sub>C</sub> = V(t)</b>
+		<br>
+		where V<sub>R</sub>, V<sub>L</sub> and V<sub>C</sub> are the voltages across R, L and C respectively and V(t) is the time-varying voltage from the source.<br>
+		Substituting V<sub>R</sub>=IR ,
+		<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8862e04de15ba58f4724f65172a42408c1cd0c2d" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.005ex; width:13.261ex; height:5.843ex;" alt="{\displaystyle V_{L}=L{dI(t) \over dt}}">
+		and <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ba6e1f62ddf7d4361c6604bd44e3c01fe1b6220f" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.338ex; width:27.189ex; height:6.176ex;" alt="{\displaystyle V_{C}=V(0)+{\frac {1}{C}}\int _{0}^{t}I(\tau )\,d\tau }">
+		yields <br>
+		<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle RI(t)+L{\frac {dI(t)}{dt}}+V(0)+{\frac {1}{C}}\int _{0}^{t}I(\tau )\,d\tau =V(t)\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mi>L</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mrow>
+              <mi>d</mi>
+              <mi>I</mi>
+              <mo stretchy="false">(</mo>
+              <mi>t</mi>
+              <mo stretchy="false">)</mo>
+            </mrow>
+            <mrow>
+              <mi>d</mi>
+              <mi>t</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mo>+</mo>
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mn>0</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mn>1</mn>
+            <mi>C</mi>
+          </mfrac>
+        </mrow>
+        <msubsup>
+          <mo>∫<!-- ∫ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>t</mi>
+          </mrow>
+        </msubsup>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>τ<!-- τ --></mi>
+        <mo stretchy="false">)</mo>
+        <mspace width="thinmathspace"></mspace>
+        <mi>d</mi>
+        <mi>τ<!-- τ --></mi>
+        <mo>=</mo>
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle RI(t)+L{\frac {dI(t)}{dt}}+V(0)+{\frac {1}{C}}\int _{0}^{t}I(\tau )\,d\tau =V(t)\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1c938b2a5f12a757d915ea4ae25cb6fe22e86e7d" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.338ex; width:48.544ex; height:6.176ex;" alt="{\displaystyle RI(t)+L{\frac {dI(t)}{dt}}+V(0)+{\frac {1}{C}}\int _{0}^{t}I(\tau )\,d\tau =V(t)\,.}"></span></dd>
+
+Here we are considering V(t) to be constant dc voltage V. Taking the time derivative and dividing by L leads to the following second order differential equation:
+
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+{\frac {R}{L}}{\frac {d}{dt}}I(t)+{\frac {1}{LC}}I(t)=0\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <msup>
+              <mi>d</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msup>
+            <mrow>
+              <mi>d</mi>
+              <msup>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mn>2</mn>
+                </mrow>
+              </msup>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>R</mi>
+            <mi>L</mi>
+          </mfrac>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>d</mi>
+            <mrow>
+              <mi>d</mi>
+              <mi>t</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mn>1</mn>
+            <mrow>
+              <mi>L</mi>
+              <mi>C</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+{\frac {R}{L}}{\frac {d}{dt}}I(t)+{\frac {1}{LC}}I(t)=0\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1e7987fd18e9ad5ec671a499968a08ab8a76b411" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.171ex; width:36.061ex; height:6.009ex;" alt="{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+{\frac {R}{L}}{\frac {d}{dt}}I(t)+{\frac {1}{LC}}I(t)=0\,.}"></span></dd></dl>
+
+This can be expressed as:
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+2\alpha {\frac {d}{dt}}I(t)+\omega _{0}^{2}I(t)=0\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <msup>
+              <mi>d</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msup>
+            <mrow>
+              <mi>d</mi>
+              <msup>
+                <mi>t</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mn>2</mn>
+                </mrow>
+              </msup>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mi>α<!-- α --></mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>d</mi>
+            <mrow>
+              <mi>d</mi>
+              <mi>t</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <msubsup>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msubsup>
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+2\alpha {\frac {d}{dt}}I(t)+\omega _{0}^{2}I(t)=0\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8b921c82b3c4e114ebe10fcc2c8b2985128337f1" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.171ex; width:34.425ex; height:6.009ex;" alt="{\displaystyle {\frac {d^{2}}{dt^{2}}}I(t)+2\alpha {\frac {d}{dt}}I(t)+\omega _{0}^{2}I(t)=0\,.}"></span></dd></dl>
+
+ alpha and w<sub>0</sub> are both in units of angular frequency.
+ Alpha is called the neper frequency, or attenuation, and is a measure of how fast the transient response of the circuit will die away after the stimulus has been removed.
+ w<sub>0</sub> is the angular resonance frequency.
+ <br>
+ In series RLC circuit,
+ <dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}\alpha &amp;={\frac {R}{2L}}\\\omega _{0}&amp;={\frac {1}{\sqrt {LC}}}\,.\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <mi>α<!-- α --></mi>
+              </mtd>
+              <mtd>
+                <mi></mi>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mfrac>
+                    <mi>R</mi>
+                    <mrow>
+                      <mn>2</mn>
+                      <mi>L</mi>
+                    </mrow>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <msub>
+                  <mi>ω<!-- ω --></mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>0</mn>
+                  </mrow>
+                </msub>
+              </mtd>
+              <mtd>
+                <mi></mi>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mfrac>
+                    <mn>1</mn>
+                    <msqrt>
+                      <mi>L</mi>
+                      <mi>C</mi>
+                    </msqrt>
+                  </mfrac>
+                </mrow>
+                <mspace width="thinmathspace"></mspace>
+                <mo>.</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}\alpha &amp;={\frac {R}{2L}}\\\omega _{0}&amp;={\frac {1}{\sqrt {LC}}}\,.\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/35d9cd103137486e3744cec5d75bd5663fe50c25" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -5.171ex; width:13.505ex; height:11.509ex;" alt="{\displaystyle {\begin{aligned}\alpha &amp;={\frac {R}{2L}}\\\omega _{0}&amp;={\frac {1}{\sqrt {LC}}}\,.\end{aligned}}}"></span></dd></dl>
+
+Now we define a new parameter called damping parameter,
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \zeta ={\frac {\alpha }{\omega _{0}}}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>ζ<!-- ζ --></mi>
+        <mo>=</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>α<!-- α --></mi>
+            <msub>
+              <mi>ω<!-- ω --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+          </mfrac>
+        </mrow>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \zeta ={\frac {\alpha }{\omega _{0}}}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/331c13d408dcdbe2d69f6b11cea5ec5ffca64219" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.171ex; width:8.564ex; height:5.009ex;" alt="{\displaystyle \zeta ={\frac {\alpha }{\omega _{0}}}\,.}"></span></dd></dl>
+In the case of series RLC circuit damping parameter is given by,
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \zeta ={\frac {R}{2}}{\sqrt {\frac {C}{L}}}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>ζ<!-- ζ --></mi>
+        <mo>=</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>R</mi>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <msqrt>
+            <mfrac>
+              <mi>C</mi>
+              <mi>L</mi>
+            </mfrac>
+          </msqrt>
+        </mrow>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \zeta ={\frac {R}{2}}{\sqrt {\frac {C}{L}}}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c49ef8e108cd770dca254187121a19be182ff345" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.338ex; width:12.754ex; height:6.176ex;" alt="{\displaystyle \zeta ={\frac {R}{2}}{\sqrt {\frac {C}{L}}}\,.}"></span></dd></dl>
+
+ The differential equation has the characteristic equation:
+ <dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle s^{2}+2\alpha s+\omega _{0}^{2}=0\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msup>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mi>α<!-- α --></mi>
+        <mi>s</mi>
+        <mo>+</mo>
+        <msubsup>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msubsup>
+        <mo>=</mo>
+        <mn>0</mn>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle s^{2}+2\alpha s+\omega _{0}^{2}=0\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/955f6d702e420613bbc28aaec1d69f9fc3c2e469" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.005ex; width:19.361ex; height:3.343ex;" alt="{\displaystyle s^{2}+2\alpha s+\omega _{0}^{2}=0\,.}"></span></dd></dl>
+The roots of the equation are:
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}s_{1}&amp;=-\alpha +{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\\s_{2}&amp;=-\alpha -{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\,.\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <msub>
+                  <mi>s</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                  </mrow>
+                </msub>
+              </mtd>
+              <mtd>
+                <mi></mi>
+                <mo>=</mo>
+                <mo>−<!-- − --></mo>
+                <mi>α<!-- α --></mi>
+                <mo>+</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <msqrt>
+                    <msup>
+                      <mi>α<!-- α --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msup>
+                    <mo>−<!-- − --></mo>
+                    <msubsup>
+                      <mi>ω<!-- ω --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>0</mn>
+                      </mrow>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msubsup>
+                  </msqrt>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <msub>
+                  <mi>s</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                  </mrow>
+                </msub>
+              </mtd>
+              <mtd>
+                <mi></mi>
+                <mo>=</mo>
+                <mo>−<!-- − --></mo>
+                <mi>α<!-- α --></mi>
+                <mo>−<!-- − --></mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <msqrt>
+                    <msup>
+                      <mi>α<!-- α --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msup>
+                    <mo>−<!-- − --></mo>
+                    <msubsup>
+                      <mi>ω<!-- ω --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>0</mn>
+                      </mrow>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msubsup>
+                  </msqrt>
+                </mrow>
+                <mspace width="thinmathspace"></mspace>
+                <mo>.</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}s_{1}&amp;=-\alpha +{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\\s_{2}&amp;=-\alpha -{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\,.\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cf4ed5e4f5ac01c5ae25e56f142751e425d2d928" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -4.338ex; width:23.371ex; height:9.843ex;" alt="{\displaystyle {\begin{aligned}s_{1}&amp;=-\alpha +{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\\s_{2}&amp;=-\alpha -{\sqrt {\alpha ^{2}-\omega _{0}^{2}}}\,.\end{aligned}}}"></span></dd></dl>
+The general solution of the differential equation is,
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle I(t)=A_{1}e^{s_{1}t}+A_{2}e^{s_{2}t}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <msub>
+              <mi>s</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <msub>
+              <mi>s</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msub>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle I(t)=A_{1}e^{s_{1}t}+A_{2}e^{s_{2}t}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1d474c9b96abb39c06b1ffdbc09033669c8ca7f5" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:23.412ex; height:3.009ex;" alt="{\displaystyle I(t)=A_{1}e^{s_{1}t}+A_{2}e^{s_{2}t}\,.}"></span></dd></dl>
+where A<sub>1</sub> and A<sub>2</sub> are constants determined by the boundary conditions.<br>
+<b>Overdamped response</b><br>
+This is when damping parameter is greater than one.
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle I(t)=A_{1}e^{-\omega _{0}\left(\zeta +{\sqrt {\zeta ^{2}-1}}\right)t}+A_{2}e^{-\omega _{0}\left(\zeta -{\sqrt {\zeta ^{2}-1}}\right)t}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <msub>
+              <mi>ω<!-- ω --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mi>ζ<!-- ζ --></mi>
+                <mo>+</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <msqrt>
+                    <msup>
+                      <mi>ζ<!-- ζ --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msup>
+                    <mo>−<!-- − --></mo>
+                    <mn>1</mn>
+                  </msqrt>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <msub>
+          <mi>A</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <msub>
+              <mi>ω<!-- ω --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mi>ζ<!-- ζ --></mi>
+                <mo>−<!-- − --></mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <msqrt>
+                    <msup>
+                      <mi>ζ<!-- ζ --></mi>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mn>2</mn>
+                      </mrow>
+                    </msup>
+                    <mo>−<!-- − --></mo>
+                    <mn>1</mn>
+                  </msqrt>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle I(t)=A_{1}e^{-\omega _{0}\left(\zeta +{\sqrt {\zeta ^{2}-1}}\right)t}+A_{2}e^{-\omega _{0}\left(\zeta -{\sqrt {\zeta ^{2}-1}}\right)t}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8fac8aac6aa573b94e7f6e5956cf3ce330b12d3f" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:46.148ex; height:5.343ex;" alt="{\displaystyle I(t)=A_{1}e^{-\omega _{0}\left(\zeta +{\sqrt {\zeta ^{2}-1}}\right)t}+A_{2}e^{-\omega _{0}\left(\zeta -{\sqrt {\zeta ^{2}-1}}\right)t}\,.}"></span></dd></dl>
+
+It is the decay of the transient current without oscillation.<br>
+<b>Underdamped response</b>
+<br>
+This response is when damping parameter is less than 1.
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle I(t)=B_{1}e^{-\alpha t}\cos(\omega _{\mathrm {d} }t)+B_{2}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t)\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>B</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <mi>α<!-- α --></mi>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mi>cos</mi>
+        <mo>⁡<!-- ⁡ --></mo>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi mathvariant="normal">d</mi>
+            </mrow>
+          </mrow>
+        </msub>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <msub>
+          <mi>B</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <mi>α<!-- α --></mi>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mi>sin</mi>
+        <mo>⁡<!-- ⁡ --></mo>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi mathvariant="normal">d</mi>
+            </mrow>
+          </mrow>
+        </msub>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle I(t)=B_{1}e^{-\alpha t}\cos(\omega _{\mathrm {d} }t)+B_{2}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t)\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6f6d9f477021c8247201c5a0db3efebe04c4e205" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:42.133ex; height:3.009ex;" alt="{\displaystyle I(t)=B_{1}e^{-\alpha t}\cos(\omega _{\mathrm {d} }t)+B_{2}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t)\,.}"></span></dd></dl>
+By applying trignometric identities the two sinusoids may be expressed as a single sinusoid with a phase shift,
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle I(t)=B_{3}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t+\varphi )\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>B</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>3</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <mi>α<!-- α --></mi>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mi>sin</mi>
+        <mo>⁡<!-- ⁡ --></mo>
+        <mo stretchy="false">(</mo>
+        <msub>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi mathvariant="normal">d</mi>
+            </mrow>
+          </mrow>
+        </msub>
+        <mi>t</mi>
+        <mo>+</mo>
+        <mi>φ<!-- φ --></mi>
+        <mo stretchy="false">)</mo>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle I(t)=B_{3}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t+\varphi )\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f9c1726a7e1bb76affbcdd5dfcae87482807f0ae" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:27.855ex; height:3.009ex;" alt="{\displaystyle I(t)=B_{3}e^{-\alpha t}\sin(\omega _{\mathrm {d} }t+\varphi )\,.}"></span></dd></dl>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \omega _{\mathrm {d} }={\sqrt {\omega _{0}^{2}-\alpha ^{2}}}=\omega _{0}{\sqrt {1-\zeta ^{2}}}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mrow class="MJX-TeXAtom-ORD">
+              <mi mathvariant="normal">d</mi>
+            </mrow>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <msqrt>
+            <msubsup>
+              <mi>ω<!-- ω --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msubsup>
+            <mo>−<!-- − --></mo>
+            <msup>
+              <mi>α<!-- α --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msup>
+          </msqrt>
+        </mrow>
+        <mo>=</mo>
+        <msub>
+          <mi>ω<!-- ω --></mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mrow class="MJX-TeXAtom-ORD">
+          <msqrt>
+            <mn>1</mn>
+            <mo>−<!-- − --></mo>
+            <msup>
+              <mi>ζ<!-- ζ --></mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>2</mn>
+              </mrow>
+            </msup>
+          </msqrt>
+        </mrow>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \omega _{\mathrm {d} }={\sqrt {\omega _{0}^{2}-\alpha ^{2}}}=\omega _{0}{\sqrt {1-\zeta ^{2}}}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/914e618661cf2fee902d8977555f0059dbda7164" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.671ex; width:31.028ex; height:4.843ex;" alt="{\displaystyle \omega _{\mathrm {d} }={\sqrt {\omega _{0}^{2}-\alpha ^{2}}}=\omega _{0}{\sqrt {1-\zeta ^{2}}}\,.}"></span></dd></dl>
+This is called the damped resonance frequency or the damped natural frequency. It is the frequency the circuit will naturally oscillate at if not driven by an external source. 
+<br>
+<b>Critically damped response</b>
+<br>
+In critically damped response,damping parameter is 1.
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle I(t)=D_{1}te^{-\alpha t}+D_{2}e^{-\alpha t}\,.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>I</mi>
+        <mo stretchy="false">(</mo>
+        <mi>t</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <msub>
+          <mi>D</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <mi>t</mi>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <mi>α<!-- α --></mi>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <msub>
+          <mi>D</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <msup>
+          <mi>e</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>−<!-- − --></mo>
+            <mi>α<!-- α --></mi>
+            <mi>t</mi>
+          </mrow>
+        </msup>
+        <mspace width="thinmathspace"></mspace>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle I(t)=D_{1}te^{-\alpha t}+D_{2}e^{-\alpha t}\,.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/17449360b252e8e176130821cc5f23ec08e59137" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:26.07ex; height:3.009ex;" alt="{\displaystyle I(t)=D_{1}te^{-\alpha t}+D_{2}e^{-\alpha t}\,.}"></span></dd></dl>
+where D<sub>1</sub>	and D<sub>2</sub> are determined by boundary conditions.	
+		
+		
+	
+	</p>
+	<div class="blackhole">
+<img src= "C:\Users\ASUS\Desktop\xcircuit figures\blackhole.png">
+</div>
+
+<div class="blackhole2">
+<img src= "C:\Users\ASUS\Desktop\xcircuit figures\blackhole2.png">
+</div>
+
+
+   
+</body></html>
